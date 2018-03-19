@@ -42,4 +42,8 @@ public class ControlHistorial {
        }
        
    }
+   public void imprime(pagos pagos[], Responsable res){
+       ControlImprimir ci = new ControlImprimir(pagos,res);
+       ci.imprimirHistorial();
+   }
 }

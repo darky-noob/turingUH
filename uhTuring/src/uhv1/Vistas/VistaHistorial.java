@@ -24,6 +24,7 @@ public class VistaHistorial extends javax.swing.JFrame {
     String telefono;
     String numCasa;
     pagos pagos[];
+    Responsable responsable;
     
     public VistaHistorial(ControlHistorial control, pagos pagos[]) {
         this.control = control;
@@ -34,7 +35,7 @@ public class VistaHistorial extends javax.swing.JFrame {
     
     //Metodo que recibe entidad Responsable y muestra datos en Vista Historial (nombre, apellidos, tel, casa)
     public void MuestaHistorial(Responsable hab){
-        
+        this.responsable = hab;
         jtxtNombre.setText(hab.getNombre());
         jtxtApellidoPat.setText(hab.getaPat());
         jtxtApellidoMat.setText(hab.getaMat());
@@ -57,6 +58,7 @@ public class VistaHistorial extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -88,6 +90,7 @@ public class VistaHistorial extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jButton1.setText("Cancelar");
+        jButton2.setText("Imprimir");
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel1.setText("HISTORIAL HABITANTE");
@@ -109,6 +112,12 @@ public class VistaHistorial extends javax.swing.JFrame {
         jtxtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtxtNombreActionPerformed(evt);
+            }
+        });
+        
+         jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
             }
         });
 
@@ -196,6 +205,7 @@ public class VistaHistorial extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
+                .addComponent(jButton2)
                 .addGap(148, 148, 148))
         );
         layout.setVerticalGroup(
@@ -226,6 +236,7 @@ public class VistaHistorial extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
+                .addComponent(jButton2)
                 .addContainerGap())
         );
 
@@ -251,6 +262,11 @@ public class VistaHistorial extends javax.swing.JFrame {
     private void jtxtNumCasaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtNumCasaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtxtNumCasaActionPerformed
+    
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        
+        control.imprime(pagos, responsable);
+    }   
 
     /**
      * @param args the command line arguments
@@ -259,6 +275,7 @@ public class VistaHistorial extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
